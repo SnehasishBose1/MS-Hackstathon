@@ -58,7 +58,6 @@ html{
     position: fixed;
     right: 0;
     bottom: 0;
-
 }
 
 
@@ -425,32 +424,246 @@ body {
     border-radius: 15px;
 }
 
-.objectivecontainer h1{
-    color: rgb(57, 156, 237);
-    text-shadow: 3px 0px 5px black;
-    font-family: 'Orbitron', sans-serif;
+.objectivecontainer .dibba{
+    position: relative;
+    width: 300px;
+    height: 100px;
+    display: flex;
 }
+.dibba h1{
+    color: #fff;
+    font-size: 2em;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 5px #00b3ff,
+                 0 0 10px #00b3ff,
+                 0 0 20px #00b3ff,
+                 0 0 40px #00b3ff,
+                 0 0 60px #00b3ff;
+}
+.lightbar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 7px;
+    height: 100%;
+    border-radius: 7px;
+    background: #fff;
+    z-index: 2;
+    box-shadow: 0 0 5px #00b3ff,
+                0 0 10px #00b3ff,
+                0 0 20px #00b3ff,
+                0 0 40px #00b3ff,
+                0 0 60px #00b3ff;
+    animation: animatelightbar 5s linear infinite;
+}
+@keyframes animatelightbar
+{
+    0%,5%
+    {
+        transform: scaleY(0) translateX(0);
+    }
+    10%
+    {
+        transform: scaleY(1) translateX(0);
+    }
+    90%
+    {
+        transform: scaleY(1) translateX(calc(300px - 7px));
+    }
+    95%,100%
+    {
+        transform: scaleY(0) translateX(calc(300px - 7px));
+    }
+}
+.topLayer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    animation: animatetopLayer 10s linear infinite;
+}
+
+@keyframes animatetopLayer
+{
+    0%,2.5%
+    {
+        transform: translateX(0);
+    }
+    5%
+    {
+        transform: translateX(0);
+    }
+    45%
+    {
+        transform: translateX(100%);
+    }
+    47.5%,50%
+    {
+        transform: translateX(100%);
+    } 
+    
+    50.001%,52.5%
+    {
+        transform: translateX(-100%);
+    }
+    55%
+    {
+        transform: translateX(-100%);
+    }
+    95%
+    {
+        transform: translateX(0%);
+    }
+    97.5%,100%
+    {
+        transform: translateX(0%);
+    }  
+}
+    
+    
+    
+
+
+
 
 .section-container {
     --bs-gutter-x: 1.5rem;
     --bs-gutter-y: 0;
     display: flex;
     flex-wrap: wrap;
+    padding-left: 10%;
+    
     
 }
 
-.section-container .columns {
+.columns {
     flex: 0 0 auto;
     width: 50%;
     
 }
 
-.section-container .columns.image {
+
+.section-container .columns {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 90%;
 }
+ .columns {
+    --tile: 40px;
+    --radius: 50%;
+  }
+  .glass {
+    position: relative;
+    width: 400px;
+    height: 400px;
+  }
+  .glass + .glass {
+    margin-left: 1rem;
+  }
+  .glass:after, .glass:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-mask-position: 50% 50%;
+            mask-position: 50% 50%;
+    transition: -webkit-mask-size 0.75s;
+    transition: mask-size 0.75s;
+    transition: mask-size 0.75s, -webkit-mask-size 0.75s;
+    transition-property: background-position, -webkit-mask-size;
+    transition-property: mask-size, background-position;
+    transition-property: mask-size, background-position, -webkit-mask-size;
+  }
+  
+  .glass--1, .glass--1:after, .glass--1:before {
+    background: url(pexels-cottonbro-8720271.jpg);
+    background-size: 110% 110%;
+  }
+
+  
+  
+  .glass--1:after, .glass--1:before {
+    -webkit-mask-image: linear-gradient(to right bottom, white 51%, rgba(0, 0, 0, 0) 0);
+            mask-image: linear-gradient(to right bottom, white 51%, rgba(0, 0, 0, 0) 0);
+    -webkit-mask-size: var(--tile) var(--tile);
+            mask-size: var(--tile) var(--tile);
+    -webkit-mask-position: 50% 50%;
+            mask-position: 50% 50%;
+  }
+  .glass--1:after {
+    background-position: -0.5vw -0.5vw;
+    -webkit-mask-image: linear-gradient(to left top, white 51%, rgba(0, 0, 0, 0) 0);
+            mask-image: linear-gradient(to left top, white 51%, rgba(0, 0, 0, 0) 0);
+  }
+  .glass--1:hover:before, .glass--1:hover:after {
+    --tile: 100px;
+    -webkit-mask-size: calc(var(--tile) * .45) calc(var(--tile) * 1.5);
+            mask-size: calc(var(--tile) * .45) calc(var(--tile) * 1.5);
+  }
+  .glass--1:hover:after {
+    background-position: -1vw -1vw;
+  }
+  .glass--2, .glass--2:after, .glass--2:before {
+    background: url(pexels-mati-mango-5952651.jpg);
+    background-size: 110% 110%;
+  }
+  .glass--2:after, .glass--2:before {
+    -webkit-mask-image: repeating-radial-gradient(white, white 1em, transparent 0, transparent 2em);
+            mask-image: repeating-radial-gradient(white, white 1em, transparent 0, transparent 2em);
+    -webkit-mask-size: var(--radius) var(--radius);
+            mask-size: var(--radius) var(--radius);
+    -webkit-mask-position: 50% 50%;
+            mask-position: 50% 50%;
+  }
+  .glass--2:after {
+    background-position: -0.5vw -0.5vw;
+    background-position: -1vw -1vw;
+    -webkit-mask-image: repeating-radial-gradient(transparent, transparent 1em, white 0, white 2em);
+            mask-image: repeating-radial-gradient(transparent, transparent 1em, white 0, white 2em);
+  }
+  .glass--2:hover:before, .glass--2:hover:after {
+    --radius: 70%;
+  }
+  .glass--2:hover:after {
+    background-position: -0.5vw -0.5vw;
+  }
+
+  .glass--3, .glass--3:after, .glass--3:before {
+    background: url(pexels-pixabay-207580s.jpg);
+    background-size: 110% 110%;
+  }
+
+  
+  
+  .glass--3:after, .glass--3:before {
+    -webkit-mask-image: linear-gradient(to right bottom, white 51%, rgba(0, 0, 0, 0) 0);
+            mask-image: linear-gradient(to right bottom, white 51%, rgba(0, 0, 0, 0) 0);
+    -webkit-mask-size: var(--tile) var(--tile);
+            mask-size: var(--tile) var(--tile);
+    -webkit-mask-position: 50% 50%;
+            mask-position: 50% 50%;
+  }
+  .glass--3:after {
+    background-position: -0.5vw -0.5vw;
+    -webkit-mask-image: linear-gradient(to left top, white 51%, rgba(0, 0, 0, 0) 0);
+            mask-image: linear-gradient(to left top, white 51%, rgba(0, 0, 0, 0) 0);
+  }
+  .glass--3:hover:before, .glass--3:hover:after {
+    --tile: 100px;
+    -webkit-mask-size: calc(var(--tile) * .45) calc(var(--tile) * 1.5);
+            mask-size: calc(var(--tile) * .45) calc(var(--tile) * 1.5);
+  }
+  .glass--3:hover:after {
+    background-position: -1vw -1vw;
+  }
+
 
 .section-container .columns.content .content-container {
     padding: 40px 50px;
@@ -486,7 +699,7 @@ body {
         flex-flow: row wrap;
     }
 
-    .section-container .columns.image {
+    .section-container .columns.glass.glass--1 {
         display: block;
         order: 1;
         width: 100%;
@@ -741,6 +954,9 @@ h1{
   bottom: 0;
   z-index: 1;
 }
+h5{
+    color: white;
+}
 
 .snip1527 figcaption:before {
   position: absolute;
@@ -750,9 +966,9 @@ h1{
   right: 0;
   background: #700877;
   content: '';
-  background: -moz-linear-gradient(90deg, #700877 0%, #ff2759 100%, #ff2759 100%);
-  background: -webkit-linear-gradient(90deg, #700877 0%, #ff2759 100%, #ff2759 100%);
-  background: linear-gradient(90deg, #700877 0%, #ff2759 100%, #ff2759 100%);
+  background: -moz-linear-gradient(90deg, #700877 0%, #5833FF 100%, #5833FF 100%);
+  background: -webkit-linear-gradient(90deg, #700877 0%, #5833FF 100%, #5833FF 100%);
+  background: linear-gradient(90deg, #700877 0%, #5833FF 100%, #5833FF 100%);
   opacity: 0.8;
   z-index: -1;
 }
@@ -1205,7 +1421,7 @@ section::before {
 	right: 14.5%;
 	bottom: 14.5%;
 	border-radius: 50%;
-	-webkit-clip-path: circle(50%);
+	webkit-clip-path: circle(50%);
 	overflow: hidden;
 }
 
